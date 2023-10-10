@@ -1,0 +1,8 @@
+.item {
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.item:hover {
+    transform: scale(1.1);
+}

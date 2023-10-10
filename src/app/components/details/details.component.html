@@ -1,0 +1,17 @@
+<div>
+    <div class="position-relative">
+        <img class="img-fluid w-100" style="height: 100vh; object-position: top; object-fit: cover; filter: blur(5px);" [src]="anime.images.jpg.large_image_url"/>
+        <div class="position-absolute top-0 w-100 h-100 text-center d-flex flex-column justify-content-center align-items-center text-white">
+            <h1 style="font-size: 80px;">{{anime.title}}</h1>
+            <h4>Release: {{anime.aired.from | date:'M-d-y' }}</h4>
+            <h4 class="text-center">Genres</h4>
+            <p>
+                <span class="btn btn-warning me-2" *ngFor="let genre of anime.genres">{{genre.name}}</span>
+            </p>
+            <h1>Rate: {{anime.score}}/10</h1>
+            <h1>Popularity: {{anime.popularity}}</h1>
+            <h1>{{anime.type}}</h1>
+        </div>
+    </div>
+    <app-anime-tabs [anime]="anime" [allData]="allData"></app-anime-tabs>
+</div>

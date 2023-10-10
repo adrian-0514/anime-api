@@ -1,0 +1,9 @@
+<div class="">
+    <form class="bg-dark d-flex p-3 justify-content-between" #form="ngForm" (ngSubmit)="onSubmit(form)" >
+        <h3 class="text-white me-5" style="cursor: pointer;" routerLink="/">Anime-Api</h3>
+        <div class="d-flex flex-grow-1">
+            <input class="form-control me-2" name="search" [(ngModel)]="inputData" type="search" placeholder="1,000 + animes">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </div>
+    </form>
+</div>

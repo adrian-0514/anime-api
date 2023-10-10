@@ -1,0 +1,43 @@
+<div class="p-3 container">
+    <div class="d-flex mb-5">
+        <select class="form-select" style="width: 250px !important" [(ngModel)]="order_by" name="order_by" (change)="searchAnime(order_by, sort,type)">
+            <option value="" selected>Ordenar por</option>
+            <option value="title">Title</option>
+            <option value="releasedDate">Fecha de lanzamiento</option>
+            <option value="popularity">Popularidad</option>
+        </select>
+        <select class="form-select mx-2" style="width: 250px !important" [(ngModel)]="sort" name="sort" (change)="searchAnime(order_by, sort,type)">
+            <option value="" selected>Clasificar</option>
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+        </select>
+        <select class="form-select" style="width: 250px !important" [(ngModel)]="type" name="type" (change)="searchAnime(order_by, sort,type)">
+            <option value="" selected>Tipo</option>
+            <option value="tv">Tv</option>
+            <option value="movie">Película</option>
+            <option value="special">Especial</option>
+            <option value="music">Música</option>
+        </select>
+    </div>
+    <div class="row justify-content-center h-100">
+        <div class="col-md-3 p-3 text-white item" *ngFor="let anime of animes">
+            <div class="rounded-3 h-100" style="background-color: rgb(75, 75, 75); box-shadow: 0px 3px 15px rgb(4, 32, 238);" (click)="openAnimeDetails(anime.mal_id)">
+                <img class="img-fluid w-100" style="border-radius: 10px 10px 0 0; height: 300px;" [src]="anime.images.jpg.image_url" [alt]="anime.title"/>
+                <div class="p-2">
+                    <h3 class="text-decoration-underline">{{anime.title}}</h3>
+                    <h5>Date: {{anime.aired.from | date:'M-d-y' }}</h5>
+                    <h5>Duration: {{anime.duration}}</h5>
+                    <h5>Episodes: {{anime.episodes}}</h5>
+                    <div class="border-bottom border-1"></div>
+                    <h5 class="text-center">Genres</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <div class="btn btn-warning p-1" *ngFor="let genre of anime.genres">{{genre.name}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center my-5">
+        <button [disabled]="!hasNextPage" class="btn btn-warning p-3 fw-bold" (click)="generateMoreAnime(order_by, sort, type)">Mostrar más</button>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="text-white container mt-3">
+    <mat-tab-group backgroundColor="warn" dynamicHeight mat-align-tabs="start">
+        <mat-tab label="Acerca de">
+            <div class="p-2">
+                <div>
+                    <h3>Producers:</h3>
+                    <div class="row">
+                        <div class="p-2 col-md-4" *ngFor="let producer of anime.producers">
+                            <div class="border-1 border rounded p-3" style="border-color: rgb(195, 195, 195) !important;">
+                                <h5>{{producer.name}}</h5>
+                                <a [href]="producer.url">Producer Link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </mat-tab>
+        <mat-tab label="Capturas de pantalla">
+            <div class="p-2 d-flex flex-wrap justify-content-center">
+                <img class="img-fluid p-1" [src]="img.jpg.image_url" *ngFor="let img of allData.pictures"/>
+            </div>
+        </mat-tab>
+        <mat-tab label="Videos">
+            <div class="p-2 d-flex flex-wrap justify-content-center">
+                <div class="p-1" *ngFor="let video of allData.videos.promo">
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        [src]="video.trailer.embed_url | safe" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+                </div>
+
+            </div>
+        </mat-tab>
+        </mat-tab-group>
+</div>
